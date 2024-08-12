@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 2:49:09 PM
- *  Last update: 12 Aug 2024, 5:14:51 PM
+ *  Last update: 12 Aug 2024, 5:20:26 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from "react";
@@ -61,7 +61,10 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
                         <button
                             key={index}
                             onClick={onPress}
-                            className={styles.tabBtn}
+                            className={
+                                `${styles.tabBtn}
+                                ${tab.active ? styles.tabBtnSelected : ""}`
+                            }
                         >
                             {label}
                         </button>
