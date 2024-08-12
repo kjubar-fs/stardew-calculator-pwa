@@ -1,0 +1,19 @@
+/*
+ *  Author: Kaleb Jubar
+ *  Created: 12 Aug 2024, 3:18:47 PM
+ *  Last update: 
+ *  Copyright (c) 2024 Kaleb Jubar
+ */
+
+.container {
+    background-color: var(--color-light);
+    flex-direction: 'row';
+    padding: var(--padding-gap);
+
+    border-top-color: var(--color-dark);
+    border-top-width: var(--border-width);
+}
+
+.label {
+    text-align: "center";
+}
