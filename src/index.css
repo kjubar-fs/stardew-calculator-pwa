@@ -1,12 +1,52 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 12 Aug 2024, 1:21:52 PM
+ *  Last update: 12 Aug 2024, 2:40:50 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 
+/* 
+ * -------------------------
+ * Global styles
+ * -------------------------
+ */
 *, *::before, *::after {
+    /* clear margin and padding, and set border-box, to make our own styles */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    /* default text to dark theme color */
+    color: var(--color-dark);
+}
+
+:root {
+    /* theme colors */
+    --color-dark: #5B2B2A;
+    --color-mid-dark: #B14E05;
+    --color-mid-light: #DC7B05;
+    --color-light: #FFD284;
+}
+
+body {
+    background: url("/public/assets/background.png");
+    background-position: top center;
+}
+
+/* 
+ * -------------------------
+ * Global classes
+ * -------------------------
+ */
+.scrollable {
+    overflow-y: scroll;
+
+    /* hide scrollbar */
+    -ms-overflow-style: none;   /* IE and Edge */
+    scrollbar-width: none;      /* Firefox */
+
+    /* Chrome, Safari, and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
