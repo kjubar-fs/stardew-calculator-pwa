@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 12 Aug 2024, 3:22:53 PM
+ *  Last update: 12 Aug 2024, 3:48:22 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 
@@ -43,6 +43,15 @@ body {
 
     background: url("/public/assets/background.png");
     background-position: top center;
+}
+
+#root {
+    height: 100%;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
 }
 
 /* 
