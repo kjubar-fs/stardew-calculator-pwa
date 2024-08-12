@@ -1,3 +1,9 @@
+/*
+ *  Author: Kaleb Jubar
+ *  Created: 12 Aug 2024, 1:13:01 PM
+ *  Last update: 
+ *  Copyright (c) 2024 Kaleb Jubar
+ */
 import js from '@eslint/js'
 import globals from 'globals'
 import react from 'eslint-plugin-react'
@@ -33,6 +39,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      "react/prop-types": false,
     },
   },
 ]
