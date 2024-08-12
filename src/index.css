@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 12 Aug 2024, 2:40:50 PM
+ *  Last update: 12 Aug 2024, 3:22:53 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 
@@ -26,9 +26,21 @@
     --color-mid-dark: #B14E05;
     --color-mid-light: #DC7B05;
     --color-light: #FFD284;
+
+    /* sizing, padding, and margin */
+    --padding-safe-area: 45px;
+    --padding-screen: 30px;
+    --padding-gap: 20px;
+    --padding-card: 15px;
+
+    /* border */
+    --border-radius: 15px;
+    --border-width: 3px;
 }
 
 body {
+    height: 100vh;
+
     background: url("/public/assets/background.png");
     background-position: top center;
 }
