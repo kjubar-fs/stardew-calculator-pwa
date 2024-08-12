@@ -1,19 +1,31 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 3:18:47 PM
- *  Last update: 
+ *  Last update: 12 Aug 2024, 3:48:53 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
-
 .container {
-    background-color: var(--color-light);
-    flex-direction: 'row';
+    height: 100%;
+}
+
+.contentContainer {
+    height: 100%;
+}
+
+.tabContainer {
+    flex-direction: row;
+    justify-content: space-evenly;
     padding: var(--padding-gap);
 
     border-top-color: var(--color-dark);
     border-top-width: var(--border-width);
+    background-color: var(--color-light);
 }
 
-.label {
+.tabBtn {
+    font-size: 1.05rem;
     text-align: "center";
+
+    background: none;
+    border: none;
 }
