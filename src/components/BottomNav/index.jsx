@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 2:49:09 PM
- *  Last update: 12 Aug 2024, 4:15:15 PM
+ *  Last update: 12 Aug 2024, 5:14:51 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from "react";
@@ -17,6 +17,7 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
         throw new Error("Error creating BottomNav: screenComponents and tabNames must be the same length.");
     }
 
+    // create initial tab state
     const tabsInitState = [];
     for (let i = 0; i < screenComponents.length; i++) {
         tabsInitState.push({
@@ -25,11 +26,15 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
             active: tabNames[i] === initialTab ? true : false,
         });
     }
+    // set an active tab if initialTab was not provided
     if (!initialTab) {
         tabsInitState[0].active = true;
     }
     const [tabs, setTabs] = useState(tabsInitState);
 
+    /**
+     * @returns the React Component for the currently selected tab
+     */
     const getActiveTabComponent = () => {
         return tabs.filter((tab) => tab.active)[0].component;
     };
@@ -45,7 +50,11 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
 
                     // on pressing the tab
                     const onPress = () => {
-                        console.log(`Tab ${label} pressed`);
+                        const newTabs = tabs.slice();
+                        newTabs.forEach((tab) => {
+                            tab.active = tab.name === label;
+                        });
+                        setTabs(newTabs);
                     };
 
                     return (
