@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 2:49:09 PM
- *  Last update: 12 Aug 2024, 5:20:26 PM
+ *  Last update: 12 Aug 2024, 5:45:21 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from "react";
@@ -20,11 +20,11 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
     // create initial tab state
     const tabsInitState = [];
     for (let i = 0; i < screenComponents.length; i++) {
-        tabsInitState.push({
-            component: screenComponents[i],
-            name: tabNames[i],
-            active: tabNames[i] === initialTab ? true : false,
-        });
+        tabsInitState.push(new NavTab(
+            screenComponents[i],
+            tabNames[i],
+            tabNames[i] === initialTab ? true : false,
+        ));
     }
     // set an active tab if initialTab was not provided
     if (!initialTab) {
@@ -73,4 +73,12 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
             </div>
         </div>
     );
+}
+
+class NavTab {
+    constructor(component, name, active) {
+        this.component = component;
+        this.name = name;
+        this.active = active;
+    }
 }
