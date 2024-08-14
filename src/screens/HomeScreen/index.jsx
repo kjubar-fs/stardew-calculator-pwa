@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 4:06:12 PM
- *  Last update: 14 Aug 2024, 10:27:32 AM
+ *  Last update: 14 Aug 2024, 11:21:12 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from "react";
@@ -14,6 +14,9 @@ import styles from "./styles.module.css";
 export default function HomeScreen() {
     const [showSettings, setShowSettings] = useState(false);
 
+    /**
+     * Toggle the settings modal.
+     */
     const toggleSettingsModal = () => {
         setShowSettings(!showSettings);
     };
