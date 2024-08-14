@@ -1,0 +1,42 @@
+/*
+ *  Author: Kaleb Jubar
+ *  Created: 14 Aug 2024, 10:02:00 AM
+ *  Last update: 14 Aug 2024, 10:30:36 AM
+ *  Copyright (c) 2024 Kaleb Jubar
+ */
+.modalBlur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgba(0, 0, 0, 0.25);
+}
+ 
+.container {
+    position: relative;
+    gap: var(--padding-card);
+}
+
+.checkboxGrid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: var(--padding-card);
+    justify-content: space-between;
+}
+
+.checkbox {
+    width: 50%;
+    flex-direction: row;
+    gap: var(--padding-gap);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 5px;
+}
