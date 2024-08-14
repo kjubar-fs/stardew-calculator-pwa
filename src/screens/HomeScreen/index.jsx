@@ -1,19 +1,22 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 4:06:12 PM
- *  Last update: 14 Aug 2024, 9:42:06 AM
+ *  Last update: 14 Aug 2024, 10:27:32 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
+import { useState } from "react";
+
 import ButtonWithIcon from "../../components/ButtonWithIcon";
+import SettingsModal from "../../components/SettingsModal";
 
 import styles from "./styles.module.css";
 
 export default function HomeScreen() {
-    // const [showSettings, setShowSettings] = useState(false);
+    const [showSettings, setShowSettings] = useState(false);
 
-    // const toggleSettingsModal = () => {
-    //     setShowSettings(!showSettings);
-    // };
+    const toggleSettingsModal = () => {
+        setShowSettings(!showSettings);
+    };
 
     return (
         <div
@@ -48,14 +51,14 @@ export default function HomeScreen() {
 
             <div className={styles.bottomContainer}>
                 <ButtonWithIcon
-                    // onClick={toggleSettingsModal}
+                    onClick={toggleSettingsModal}
                     caption="Settings"
                     iconSize={32}
                     src="/assets/icon.png"
                 />
             </div>
 
-            {/* <SettingsModal shown={showSettings} onClose={toggleSettingsModal} /> */}
+            <SettingsModal shown={showSettings} onClose={toggleSettingsModal} />
         </div>
     );
 }
