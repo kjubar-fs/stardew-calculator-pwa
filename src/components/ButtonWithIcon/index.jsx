@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
- *  Created: 6 Aug 2024, 1:31:00 PM
- *  Last update: 12 Aug 2024, 6:14:54 PM
+ *  Created: 12 Aug 2024, 5:50:50 PM
+ *  Last update: 14 Aug 2024, 11:33:55 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import styles from "./styles.module.css";
