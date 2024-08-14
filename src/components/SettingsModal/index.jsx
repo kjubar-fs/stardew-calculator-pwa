@@ -1,41 +1,28 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:19:59 AM
- *  Last update: 14 Aug 2024, 12:24:46 PM
+ *  Last update: 14 Aug 2024, 1:46:33 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-// import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-
-// import { useDispatch, useSelector } from "react-redux";
-
-// import { setProfessionSetting } from "../../data";
+import { setProfessionSetting } from "../../data";
 
 import Checkbox from "../Checkbox";
 
 import styles from "./styles.module.css";
 
 export default function SettingsModal({ shown, onClose }) {
-    // TODO: add state/db
-    // const userId = useSelector((state) => state.settings.userId);
-    // const rancherEnabled = useSelector((state) => state.settings.professions.rancher);
-    // const gemologistEnabled = useSelector((state) => state.settings.professions.gemologist);
-    // const tillerEnabled = useSelector((state) => state.settings.professions.tiller);
-    // const blacksmithEnabled = useSelector((state) => state.settings.professions.blacksmith);
-    // const artisanEnabled = useSelector((state) => state.settings.professions.artisan);
-    // const fisherEnabled = useSelector((state) => state.settings.professions.fisher);
-    // const tapperEnabled = useSelector((state) => state.settings.professions.tapper);
-    // const anglerEnabled = useSelector((state) => state.settings.professions.angler);
-    const [rancherEnabled, setRancherEnabled] = useState(false);
-    const [gemologistEnabled, setGemologistEnabled] = useState(false);
-    const [tillerEnabled, setTillerEnabled] = useState(false);
-    const [blacksmithEnabled, setBlacksmithEnabled] = useState(false);
-    const [artisanEnabled, setArtisanEnabled] = useState(false);
-    const [fisherEnabled, setFisherEnabled] = useState(false);
-    const [tapperEnabled, setTapperEnabled] = useState(false);
-    const [anglerEnabled, setAnglerEnabled] = useState(false);
-    // const dispatch = useDispatch();
+    const userId = useSelector((state) => state.settings.userId);
+    const rancherEnabled = useSelector((state) => state.settings.professions.rancher);
+    const gemologistEnabled = useSelector((state) => state.settings.professions.gemologist);
+    const tillerEnabled = useSelector((state) => state.settings.professions.tiller);
+    const blacksmithEnabled = useSelector((state) => state.settings.professions.blacksmith);
+    const artisanEnabled = useSelector((state) => state.settings.professions.artisan);
+    const fisherEnabled = useSelector((state) => state.settings.professions.fisher);
+    const tapperEnabled = useSelector((state) => state.settings.professions.tapper);
+    const anglerEnabled = useSelector((state) => state.settings.professions.angler);
+    const dispatch = useDispatch();
 
     return (
         <div
@@ -52,63 +39,63 @@ export default function SettingsModal({ shown, onClose }) {
                         caption="Rancher"
                         initialValue={rancherEnabled}
                         onChange={(val) => {
-                            // setProfessionSetting(userId, "rancher", !rancherEnabled, dispatch);
+                            setProfessionSetting(userId, "rancher", val, dispatch);
                         }}
                     />
                     <Checkbox
                         className={styles.checkbox}
                         caption="Gemologist"
                         initialValue={gemologistEnabled}
-                        onChange={() => {
-                            // setProfessionSetting(userId, "gemologist", !gemologistEnabled, dispatch);
+                        onChange={(val) => {
+                            setProfessionSetting(userId, "gemologist", val, dispatch);
                         }}
                     />
                     <Checkbox
                         className={styles.checkbox}
                         caption="Tiller"
                         initialValue={tillerEnabled}
-                        onChange={() => {
-                            // setProfessionSetting(userId, "tiller", !tillerEnabled, dispatch);
+                        onChange={(val) => {
+                            setProfessionSetting(userId, "tiller", val, dispatch);
                         }}
                     />
                     <Checkbox
                         className={styles.checkbox}
                         caption="Blacksmith"
                         initialValue={blacksmithEnabled}
-                        onChange={() => {
-                            // setProfessionSetting(userId, "blacksmith", !blacksmithEnabled, dispatch);
+                        onChange={(val) => {
+                            setProfessionSetting(userId, "blacksmith", val, dispatch);
                         }}
                     />
                     <Checkbox
                         className={styles.checkbox}
                         caption="Artisan"
                         initialValue={artisanEnabled}
-                        onChange={() => {
-                            // setProfessionSetting(userId, "artisan", !artisanEnabled, dispatch);
+                        onChange={(val) => {
+                            setProfessionSetting(userId, "artisan", val, dispatch);
                         }}
                     />
                     <Checkbox
                         className={styles.checkbox}
                         caption="Fisher"
                         initialValue={fisherEnabled}
-                        onChange={() => {
-                            // setProfessionSetting(userId, "fisher", !fisherEnabled, dispatch);
+                        onChange={(val) => {
+                            setProfessionSetting(userId, "fisher", val, dispatch);
                         }}
                     />
                     <Checkbox
                         className={styles.checkbox}
                         caption="Tapper"
                         initialValue={tapperEnabled}
-                        onChange={() => {
-                            // setProfessionSetting(userId, "tapper", !tapperEnabled, dispatch);
+                        onChange={(val) => {
+                            setProfessionSetting(userId, "tapper", val, dispatch);
                         }}
                     />
                     <Checkbox
                         className={styles.checkbox}
                         caption="Angler"
                         initialValue={anglerEnabled}
-                        onChange={() => {
-                            // setProfessionSetting(userId, "angler", !anglerEnabled, dispatch);
+                        onChange={(val) => {
+                            setProfessionSetting(userId, "angler", val, dispatch);
                         }}
                     />
                 </div>
