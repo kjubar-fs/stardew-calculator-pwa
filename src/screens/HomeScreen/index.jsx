@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 4:06:12 PM
- *  Last update: 12 Aug 2024, 6:40:37 PM
+ *  Last update: 14 Aug 2024, 9:42:06 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import ButtonWithIcon from "../../components/ButtonWithIcon";
@@ -22,7 +22,7 @@ export default function HomeScreen() {
             <div className={styles.topContainer}>
                 <div className={styles.titleContainer}>
                     <img
-                        src="../../../public/assets/logo.png"
+                        src="/assets/logo.png"
                         className={styles.logo}
                     />
                     <p className={styles.subtitle}>Calculator</p>
@@ -51,7 +51,7 @@ export default function HomeScreen() {
                     // onClick={toggleSettingsModal}
                     caption="Settings"
                     iconSize={32}
-                    src="../../../public/assets/icon.png"
+                    src="/assets/icon.png"
                 />
             </div>
 

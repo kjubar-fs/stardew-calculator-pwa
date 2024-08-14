@@ -1,8 +1,14 @@
+<!--
+ Author: Kaleb Jubar
+ Created: 12 Aug 2024, 2:04:17 PM
+ Last update: 
+ Copyright (c) 2024 Kaleb Jubar
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <browserconfig>
     <msapplication>
         <tile>
-            <square150x150logo src="/public/icons/mstile-150x150.png"/>
+            <square150x150logo src="/icons/mstile-150x150.png"/>
             <TileColor>#071861</TileColor>
         </tile>
     </msapplication>
