@@ -1,10 +1,10 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 2:49:09 PM
- *  Last update: 12 Aug 2024, 5:45:21 PM
+ *  Last update: 14 Aug 2024, 11:09:46 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
-import { useState } from "react";
+import React, { useState } from "react";
 
 import styles from "./styles.module.css";
 
@@ -42,7 +42,7 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
     return (
         <div className={styles.container}>
             <div className={styles.contentContainer}>
-                {getActiveTabComponent()()}
+                {React.createElement(getActiveTabComponent())}
             </div>
             <div className={styles.tabContainer}>
                 {tabs.map((tab, index) => {
