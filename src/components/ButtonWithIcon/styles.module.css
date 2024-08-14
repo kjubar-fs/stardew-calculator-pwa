@@ -1,0 +1,22 @@
+/*
+ *  Author: Kaleb Jubar
+ *  Created: 12 Aug 2024, 5:51:02 PM
+ *  Last update: 12 Aug 2024, 6:38:04 PM
+ *  Copyright (c) 2024 Kaleb Jubar
+ */
+.button {
+    display: flex;
+    align-items: center;
+}
+ 
+.button:active {
+    transform: translateY(4px);
+
+    box-shadow: none;
+}
+ 
+.caption {
+    flex-grow: 1;
+    
+    text-align: center;
+}
