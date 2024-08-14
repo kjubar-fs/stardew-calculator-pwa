@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:19:59 AM
- *  Last update: 14 Aug 2024, 11:33:57 AM
+ *  Last update: 14 Aug 2024, 12:24:46 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from "react";
@@ -11,6 +11,8 @@ import { useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 
 // import { setProfessionSetting } from "../../data";
+
+import Checkbox from "../Checkbox";
 
 import styles from "./styles.module.css";
 
@@ -45,127 +47,76 @@ export default function SettingsModal({ shown, onClose }) {
 
                 <h2>Professions</h2>
                 <div className={styles.checkboxGrid}>
-                    <div className={styles.checkbox}>
-                        <input
-                            id="settingRancher"
-                            name="settingRancher"
-                            type="checkbox"
-                            value={rancherEnabled}
-                            onClick={(cb) => {
-                                // setProfessionSetting(userId, "rancher", !rancherEnabled, dispatch);
-                                console.log("Rancher changed", cb.target.checked);
-                                setRancherEnabled(cb.target.checked);
-                            }}
-                        />
-                        <label htmlFor="settingRancher">Rancher</label>
-                    </div>
-                    <div className={styles.checkbox}>
-                        <input
-                            id="settingGemologist"
-                            name="settingGemologist"
-                            type="checkbox"
-                            value={gemologistEnabled}
-                            onClick={(cb) => {
-                                // setProfessionSetting(userId, "gemologist", !gemologistEnabled, dispatch);
-                                console.log("Gemologist changed", cb.target.checked);
-                                setGemologistEnabled(cb.target.checked);
-                            }}
-                        />
-                        <label htmlFor="settingGemologist">Gemologist</label>
-                    </div>
-                    <div className={styles.checkbox}>
-                        <input
-                            id="settingTiller"
-                            name="settingTiller"
-                            type="checkbox"
-                            value={tillerEnabled}
-                            onClick={(cb) => {
-                                // setProfessionSetting(userId, "tiller", !tillerEnabled, dispatch);
-                                console.log("Tiller changed", cb.target.checked);
-                                setTillerEnabled(cb.target.checked);
-                            }}
-                        />
-                        <label htmlFor="settingTiller">Tiller</label>
-                    </div>
-                    <div className={styles.checkbox}>
-                        <input
-                            id="settingBlacksmith"
-                            name="settingBlacksmith"
-                            type="checkbox"
-                            value={blacksmithEnabled}
-                            onClick={(cb) => {
-                                // setProfessionSetting(userId, "blacksmith", !blacksmithEnabled, dispatch);
-                                console.log("Blacksmith changed", cb.target.checked);
-                                setBlacksmithEnabled(cb.target.checked);
-                            }}
-                        />
-                        <label htmlFor="settingBlacksmith">Blacksmith</label>
-                    </div>
-                    <div className={styles.checkbox}>
-                        <input
-                            id="settingArtisan"
-                            name="settingArtisan"
-                            type="checkbox"
-                            value={artisanEnabled}
-                            onChange={(cb) => {
-                                // setProfessionSetting(userId, "artisan", !artisanEnabled, dispatch);
-                                console.log("Artisan changed", cb.target.checked);
-                                setArtisanEnabled(cb.target.checked);
-                            }}
-                        />
-                        <label htmlFor="settingArtisan">Artisan</label>
-                    </div>
-                    <div className={styles.checkbox}>
-                        <input
-                            id="settingFisher"
-                            name="settingFisher"
-                            type="checkbox"
-                            value={fisherEnabled}
-                            onClick={(cb) => {
-                                // setProfessionSetting(userId, "fisher", !fisherEnabled, dispatch);
-                                console.log("Fisher changed", cb.target.checked);
-                                setFisherEnabled(cb.target.checked);
-                            }}
-                        />
-                        <label htmlFor="settingFisher">Artisan</label>
-                    </div>
-                    <div className={styles.checkbox}>
-                        <input
-                            id="settingTapper"
-                            name="settingTapper"
-                            type="checkbox"
-                            value={tapperEnabled}
-                            onClick={(cb) => {
-                                // setProfessionSetting(userId, "tapper", !tapperEnabled, dispatch);
-                                console.log("Tapper changed", cb.target.checked);
-                                setTapperEnabled(cb.target.checked);
-                            }}
-                        />
-                        <label htmlFor="settingTapper">Artisan</label>
-                    </div>
-                    <div className={styles.checkbox}>
-                        <input
-                            id="settingAngler"
-                            name="settingAngler"
-                            type="checkbox"
-                            value={anglerEnabled}
-                            onClick={(cb) => {
-                                // setProfessionSetting(userId, "angler", !anglerEnabled, dispatch);
-                                console.log("Angler changed", cb.target.checked);
-                                setAnglerEnabled(cb.target.checked);
-                            }}
-                        />
-                        <label htmlFor="settingAngler">Angler</label>
-                    </div>
+                    <Checkbox
+                        className={styles.checkbox}
+                        caption="Rancher"
+                        initialValue={rancherEnabled}
+                        onChange={(val) => {
+                            // setProfessionSetting(userId, "rancher", !rancherEnabled, dispatch);
+                        }}
+                    />
+                    <Checkbox
+                        className={styles.checkbox}
+                        caption="Gemologist"
+                        initialValue={gemologistEnabled}
+                        onChange={() => {
+                            // setProfessionSetting(userId, "gemologist", !gemologistEnabled, dispatch);
+                        }}
+                    />
+                    <Checkbox
+                        className={styles.checkbox}
+                        caption="Tiller"
+                        initialValue={tillerEnabled}
+                        onChange={() => {
+                            // setProfessionSetting(userId, "tiller", !tillerEnabled, dispatch);
+                        }}
+                    />
+                    <Checkbox
+                        className={styles.checkbox}
+                        caption="Blacksmith"
+                        initialValue={blacksmithEnabled}
+                        onChange={() => {
+                            // setProfessionSetting(userId, "blacksmith", !blacksmithEnabled, dispatch);
+                        }}
+                    />
+                    <Checkbox
+                        className={styles.checkbox}
+                        caption="Artisan"
+                        initialValue={artisanEnabled}
+                        onChange={() => {
+                            // setProfessionSetting(userId, "artisan", !artisanEnabled, dispatch);
+                        }}
+                    />
+                    <Checkbox
+                        className={styles.checkbox}
+                        caption="Fisher"
+                        initialValue={fisherEnabled}
+                        onChange={() => {
+                            // setProfessionSetting(userId, "fisher", !fisherEnabled, dispatch);
+                        }}
+                    />
+                    <Checkbox
+                        className={styles.checkbox}
+                        caption="Tapper"
+                        initialValue={tapperEnabled}
+                        onChange={() => {
+                            // setProfessionSetting(userId, "tapper", !tapperEnabled, dispatch);
+                        }}
+                    />
+                    <Checkbox
+                        className={styles.checkbox}
+                        caption="Angler"
+                        initialValue={anglerEnabled}
+                        onChange={() => {
+                            // setProfessionSetting(userId, "angler", !anglerEnabled, dispatch);
+                        }}
+                    />
                 </div>
 
                 <button
                     className={styles.close}
                     onClick={onClose}
-                    // underlayColor="#FFE395"
                 >
-                    {/* <MaterialIcons name="close" size={24} color="#C00" /> */}
-                    X
                 </button>
             </div>
         </div>
