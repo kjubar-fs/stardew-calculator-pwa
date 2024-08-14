@@ -1,0 +1,27 @@
+/*
+ *  Author: Kaleb Jubar
+ *  Created: 14 Aug 2024, 11:34:43 AM
+ *  Last update: 14 Aug 2024, 12:16:41 PM
+ *  Copyright (c) 2024 Kaleb Jubar
+ */
+.container {
+    width: 100%;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+}
+
+.checkbox {
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+
+    background-size: contain;
+
+    user-select: none;
+}
+
+.label {
+    user-select: none;
+}
