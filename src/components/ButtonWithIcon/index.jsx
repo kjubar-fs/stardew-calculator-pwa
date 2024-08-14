@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 5:50:50 PM
- *  Last update: 14 Aug 2024, 11:33:55 AM
+ *  Last update: 14 Aug 2024, 12:29:14 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import styles from "./styles.module.css";
@@ -40,6 +40,7 @@ export default function ButtonWithIcon(props) {
                 src &&
                 <img
                     src={src}
+                    className={styles.icon}
                     // default to an icon size of 32 if not provided
                     style={{
                         width: iconSize || 32,

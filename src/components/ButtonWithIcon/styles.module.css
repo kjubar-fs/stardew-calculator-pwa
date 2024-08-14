@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 5:51:02 PM
- *  Last update: 12 Aug 2024, 6:38:04 PM
+ *  Last update: 14 Aug 2024, 12:29:00 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 .button {
@@ -19,4 +19,8 @@
     flex-grow: 1;
     
     text-align: center;
+}
+
+.icon {
+    object-fit: contain;
 }
