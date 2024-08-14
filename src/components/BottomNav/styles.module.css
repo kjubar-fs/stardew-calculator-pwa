@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 3:18:47 PM
- *  Last update: 12 Aug 2024, 5:39:13 PM
+ *  Last update: 12 Aug 2024, 6:33:39 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 .container {
@@ -27,7 +27,6 @@
     gap: 3px;
     align-items: center;
 
-    font-size: 1.05rem;
     text-align: center;
 
     background: none;
