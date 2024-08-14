@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 12 Aug 2024, 3:48:22 PM
+ *  Last update: 14 Aug 2024, 9:38:25 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 
@@ -36,6 +36,10 @@
     /* border */
     --border-radius: 15px;
     --border-width: 3px;
+
+    /* font */
+    font-family: sans-serif;
+    font-size: 1.1rem;
 }
 
 body {
@@ -54,6 +58,11 @@ div {
     flex-direction: column;
 }
 
+/* button needs an explicit font-size because it doesn't take from :root */
+button {
+    font-size: 1rem;
+}
+
 /* 
  * -------------------------
  * Global classes
@@ -70,4 +79,16 @@ div {
     &::-webkit-scrollbar {
         display: none;
     }
+}
+
+.navContainer {
+    padding: var(--padding-screen);
+}
+
+.cardWithBorder {
+    background-color: var(--color-light);
+    border: var(--border-width) solid var(--color-dark);
+    padding: var(--padding-card);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: var(--border-radius);
 }
