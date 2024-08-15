@@ -1,9 +1,12 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 15 Aug 2024, 8:57:42 AM
- *  Last update: 15 Aug 2024, 9:24:52 AM
+ *  Last update: 15 Aug 2024, 12:01:48 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
+import { getAllSettings } from "./src/data/local/read";
+import { setProfessionActive } from "./src/data/firebase/write";
+
 // most of this code comes from my PWA labs, so it is still original but
 // not written fresh for this project
 const version = "1"
@@ -110,4 +113,25 @@ self.addEventListener("fetch", (event) => {
  */
 self.addEventListener("sync", (event) => {
     console.log("Sync received:", event);
+
+    // TODO: update tag
+    // check the tag
+    if (event.tag === "test-sync") {
+        // run an async IIFE so we can wait for IDB and Firebase operations
+        (async () => {
+            console.log("In async IIFE");
+
+            // get the settings to update
+            const settings = await getAllSettings();
+            console.log("Settings to update:", settings);
+
+            // save each setting to the database
+            for (const setting of settings) {
+                console.log("Updating setting:", setting);
+                const { userId, profession, value } = setting;
+                // TODO: check if successful and delete from IDB
+                await setProfessionActive(userId, profession, value);
+            }
+        })();
+    }
 });
