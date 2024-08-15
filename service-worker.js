@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 15 Aug 2024, 8:57:42 AM
- *  Last update: 15 Aug 2024, 9:03:46 AM
+ *  Last update: 15 Aug 2024, 9:24:52 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 // most of this code comes from my PWA labs, so it is still original but
@@ -102,4 +102,12 @@ self.addEventListener("fetch", (event) => {
     // } else {
     //     event.respondWith(fetch(event.request));
     // }
+});
+
+/**
+ * On Background Sync event.
+ * Triggered when we come online after the client requests a sync.
+ */
+self.addEventListener("sync", (event) => {
+    console.log("Sync received:", event);
 });
