@@ -1,12 +1,12 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 12:35:30 PM
- *  Last update: 15 Aug 2024, 9:53:53 AM
+ *  Last update: 15 Aug 2024, 9:57:36 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import * as settings from "./state/settingsSlice";
 
-import { setProfessionActive } from "./db/write";
+import { setProfessionActive } from "./firebase/write";
 
 /**
  * Set the value of the specified profession setting for the given user.

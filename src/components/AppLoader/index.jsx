@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 12:46:39 PM
- *  Last update: 
+ *  Last update: 15 Aug 2024, 9:57:41 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useEffect } from "react";
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSettings } from "../../data/state/settingsSlice";
 
-import { loadUserSettings } from "../../data/db/read";
+import { loadUserSettings } from "../../data/firebase/read";
 
 export default function AppLoader() {
     // TODO: replace with loading user ID from local DB or creating
