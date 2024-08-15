@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:19:59 AM
- *  Last update: 14 Aug 2024, 1:46:33 PM
+ *  Last update: 15 Aug 2024, 8:53:19 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +12,7 @@ import Checkbox from "../Checkbox";
 
 import styles from "./styles.module.css";
 
-export default function SettingsModal({ shown, onClose }) {
+export default function SettingsModal({ onClose }) {
     const userId = useSelector((state) => state.settings.userId);
     const rancherEnabled = useSelector((state) => state.settings.professions.rancher);
     const gemologistEnabled = useSelector((state) => state.settings.professions.gemologist);
@@ -27,7 +27,6 @@ export default function SettingsModal({ shown, onClose }) {
     return (
         <div
             className={`navContainer ${styles.modalBlur}`}
-            style={{ display: shown ? "flex" : "none" }}
         >
             <div className={`cardWithBorder ${styles.container}`}>
                 <h1>Settings</h1>

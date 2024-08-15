@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 4:06:12 PM
- *  Last update: 14 Aug 2024, 11:21:12 AM
+ *  Last update: 15 Aug 2024, 8:52:47 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from "react";
@@ -61,7 +61,9 @@ export default function HomeScreen() {
                 />
             </div>
 
-            <SettingsModal shown={showSettings} onClose={toggleSettingsModal} />
+            {showSettings &&
+                <SettingsModal onClose={toggleSettingsModal} />
+            }
         </div>
     );
 }
