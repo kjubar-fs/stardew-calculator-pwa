@@ -1,0 +1,30 @@
+/*
+ *  Author: Kaleb Jubar
+ *  Created: 15 Aug 2024, 2:17:11 PM
+ *  Last update: 15 Aug 2024, 2:25:12 PM
+ *  Copyright (c) 2024 Kaleb Jubar
+ */
+.offlineNotice {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    max-width: 75%;
+    margin: 0 auto;
+    padding: var(--border-radius);
+
+    border-radius: var(--border-radius);
+
+    background-color: rgba(0, 0, 0, 0.65);
+
+    /* let clicks pass through the notice */
+    pointer-events: none;
+}
+
+.offlineHeader {
+    color: #D00;
+}
+
+.offlineBody {
+    color: white;
+}
