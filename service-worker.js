@@ -1,10 +1,11 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 15 Aug 2024, 8:57:42 AM
- *  Last update: 15 Aug 2024, 12:01:48 PM
+ *  Last update: 15 Aug 2024, 12:18:14 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { getAllSettings } from "./src/data/local/read";
+import { deleteProfession } from "./src/data/local/write";
 import { setProfessionActive } from "./src/data/firebase/write";
 
 // most of this code comes from my PWA labs, so it is still original but
@@ -114,10 +115,10 @@ self.addEventListener("fetch", (event) => {
 self.addEventListener("sync", (event) => {
     console.log("Sync received:", event);
 
-    // TODO: update tag
+    // TODO: update tag and make global
     // check the tag
     if (event.tag === "test-sync") {
-        // run an async IIFE so we can wait for IDB and Firebase operations
+        // run an async IIFE so we can await for IDB and Firebase operations
         (async () => {
             console.log("In async IIFE");
 
@@ -128,9 +129,22 @@ self.addEventListener("sync", (event) => {
             // save each setting to the database
             for (const setting of settings) {
                 console.log("Updating setting:", setting);
-                const { userId, profession, value } = setting;
-                // TODO: check if successful and delete from IDB
-                await setProfessionActive(userId, profession, value);
+                // try updating in Firebase
+                const { id, userId, profession, value } = setting;
+                const success = await setProfessionActive(userId, profession, value);
+
+                // if successful, delete from IDB
+                if (success) {
+                    try {
+                        await deleteProfession(id);
+                    } catch (err) {
+                        // TODO: handle error better
+                        console.log(`Failed to delete ${id} from IDB:`, err);
+                    }
+                } else {
+                    // TODO: handle error better
+                    console.log(`Failed to update ${id} in Firebase, continuing...`);
+                }
             }
         })();
     }
