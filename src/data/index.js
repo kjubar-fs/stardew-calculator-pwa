@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
- *  Created: 7 Aug 2024, 4:43:31 PM
- *  Last update: 8 Aug 2024, 2:20:54 PM
+ *  Created: 14 Aug 2024, 12:35:30 PM
+ *  Last update: 15 Aug 2024, 9:53:53 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import * as settings from "./state/settingsSlice";
@@ -17,6 +17,8 @@ import { setProfessionActive } from "./db/write";
  * @returns 
  */
 export async function setProfessionSetting(userId, profession, value, dispatch) {
+    profession = profession.toLowerCase();
+
     // get capitalized title to access reducer by name
     const profTitle = `${profession[0].toUpperCase()}${profession.slice(1)}`
 
