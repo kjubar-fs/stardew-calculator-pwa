@@ -1,10 +1,12 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 15 Aug 2024, 10:00:30 AM
- *  Last update: 15 Aug 2024, 11:34:23 AM
+ *  Last update: 15 Aug 2024, 12:10:24 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { idbSettingsStore, openLocalDb } from "./db"
+
+// TODO: make all functions take an optional db object to be called from within each other
 
 /**
  * Store the setting for a given profession for the given user.
@@ -19,6 +21,7 @@ export function setProfessionActive(userId, profession, value) {
         openLocalDb().then((db) => {
             const key = `${userId}_${profession}`;
 
+            // TODO: move this into a read function
             // check if this setting for this user is already in the DB
             const getTx = db.transaction([idbSettingsStore]);
             const getStore = getTx.objectStore(idbSettingsStore);
@@ -95,5 +98,33 @@ function updateProfessionActive(db, userId, profession, value) {
         updateReq.onsuccess = () => {
             resolve();
         };
+    });
+}
+
+/**
+ * Delete a given setting.
+ * @param {string} id setting id in IDB to delete
+ * @returns a Promise that resolves if successful or rejects if failed
+ */
+export function deleteProfession(id) {
+    return new Promise((resolve, reject) => {
+        // get IndexedDB
+        openLocalDb().then((db) => {
+            // open a transaction and set up success/error handlers
+            const deleteTx = db.transaction([idbSettingsStore], "readwrite");
+            deleteTx.onerror = (e) => {
+                reject(e.target.error.message);
+            };
+
+            // get the store and delete the setting
+            const deleteStore = deleteTx.objectStore(idbSettingsStore);
+            const deleteReq = deleteStore.delete(id);
+            deleteReq.onerror = (e) => {
+                reject(e.target.error.message);
+            };
+            deleteReq.onsuccess = (e) => {
+                resolve();
+            };
+        });
     });
 }
