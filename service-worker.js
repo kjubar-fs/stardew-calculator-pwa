@@ -1,9 +1,11 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 15 Aug 2024, 8:57:42 AM
- *  Last update: 15 Aug 2024, 12:18:14 PM
+ *  Last update: 15 Aug 2024, 12:50:08 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
+import { settingsSyncTag, messageTypes, ClientMessage } from "./src/includes/variables";
+
 import { getAllSettings } from "./src/data/local/read";
 import { deleteProfession } from "./src/data/local/write";
 import { setProfessionActive } from "./src/data/firebase/write";
@@ -115,9 +117,8 @@ self.addEventListener("fetch", (event) => {
 self.addEventListener("sync", (event) => {
     console.log("Sync received:", event);
 
-    // TODO: update tag and make global
     // check the tag
-    if (event.tag === "test-sync") {
+    if (event.tag === settingsSyncTag) {
         // run an async IIFE so we can await for IDB and Firebase operations
         (async () => {
             console.log("In async IIFE");
@@ -134,17 +135,28 @@ self.addEventListener("sync", (event) => {
                 const success = await setProfessionActive(userId, profession, value);
 
                 // if successful, delete from IDB
-                if (success) {
-                    try {
-                        await deleteProfession(id);
-                    } catch (err) {
-                        // TODO: handle error better
-                        console.log(`Failed to delete ${id} from IDB:`, err);
-                    }
-                } else {
-                    // TODO: handle error better
-                    console.log(`Failed to update ${id} in Firebase, continuing...`);
-                }
+                // if (success) {
+                //     try {
+                //         await deleteProfession(id);
+                //     } catch (err) {
+                //         // TODO: handle error better
+                //         console.log(`Failed to delete ${id} from IDB:`, err);
+                //     }
+                // } else {
+                //     // TODO: handle error better
+                //     console.log(`Failed to update ${id} in Firebase, continuing...`);
+                // }
+            }
+
+            // let clients know to refresh the updated data
+            // provide no options to matchAll, since we only want to message
+            // window clients controlled by this worker
+            const activeClients = await clients.matchAll();
+            for (const client of activeClients) {
+                client.postMessage(new ClientMessage(
+                    messageTypes.refreshData,
+                    "Settings background sync"
+                ));
             }
         })();
     }
