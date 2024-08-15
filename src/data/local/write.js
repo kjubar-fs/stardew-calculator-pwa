@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 15 Aug 2024, 10:00:30 AM
- *  Last update: 15 Aug 2024, 11:30:28 AM
+ *  Last update: 15 Aug 2024, 11:34:23 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { idbSettingsStore, openLocalDb } from "./db"
@@ -11,7 +11,7 @@ import { idbSettingsStore, openLocalDb } from "./db"
  * @param {string} userId user ID to update setting for
  * @param {string} profession profession name
  * @param {boolean} value setting value
- * @returns a Promise that resolves if successfull or rejects if failed
+ * @returns a Promise that resolves if successful or rejects if failed
  */
 export function setProfessionActive(userId, profession, value) {
     return new Promise((resolve, reject) => {
@@ -65,6 +65,14 @@ export function setProfessionActive(userId, profession, value) {
     });
 }
 
+/**
+ * Update the setting for a given profession for the given user.
+ * @param {IDBDatabase} db database used for update
+ * @param {string} userId user ID to update setting for
+ * @param {string} profession profession name
+ * @param {boolean} value setting value
+ * @returns a Promise that resolves if successful or rejects if failed
+ */
 function updateProfessionActive(db, userId, profession, value) {
     return new Promise((resolve, reject) => {
         // open a transaction and set up success/error handlers
