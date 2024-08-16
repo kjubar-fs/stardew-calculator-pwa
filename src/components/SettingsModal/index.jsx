@@ -1,11 +1,11 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:19:59 AM
- *  Last update: 15 Aug 2024, 11:24:18 PM
+ *  Last update: 16 Aug 2024, 12:18:44 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useDispatch, useSelector } from "react-redux";
-import { setVibration, setNotification } from "../../data/state/settingsSlice";
+import { setVibration, setNotification, setFullscreen } from "../../data/state/settingsSlice";
 
 import { setProfessionSetting } from "../../data";
 
@@ -27,6 +27,7 @@ export default function SettingsModal({ onClose }) {
     const anglerEnabled = useSelector((state) => state.settings.professions.angler);
     const vibrationEnabled = useSelector((state) => state.settings.deviceFeatures.vibration);
     const notificationEnabled = useSelector((state) => state.settings.deviceFeatures.notification);
+    const fullscreenEnabled = useSelector((state) => state.settings.deviceFeatures.fullscreen);
     const dispatch = useDispatch();
 
     let initNotifPerm = "denied";
@@ -150,7 +151,7 @@ export default function SettingsModal({ onClose }) {
                 <p className={styles.smallText}>
                     These settings are simplified versions of potential options in the finished app.
                     They are here primarily to demonstrate my ability to use PWA APIs,
-                    and are therefore not saved to the database or persist between refreshes.
+                    and are therefore not saved to the database and do not persist between refreshes.
                 </p>
 
                 <h3>Vibration</h3>
@@ -164,6 +165,27 @@ export default function SettingsModal({ onClose }) {
 
                 <h3>Notifications</h3>
                 {getNotifSettingDisplay()}
+
+                <h3>Fullscreen</h3>
+                <Checkbox
+                    caption="Use app in fullscreen mode"
+                    initialValue={fullscreenEnabled}
+                    onChange={(val) => {
+                        dispatch(setFullscreen(val));
+                        if (val) {
+                            // request fullscreen if not in fullscreen already
+                            if (!document.fullscreenElement) {
+                                document.documentElement.requestFullscreen();
+                            }
+                        } else {
+                            // exit fullscreen if in fullscreen still
+                            // (i.e. it hasn't been exited manually by the user)
+                            if (document.exitFullscreen) {
+                                document.exitFullscreen();
+                            }
+                        }
+                    }}
+                />
 
                 <button
                     className={styles.close}

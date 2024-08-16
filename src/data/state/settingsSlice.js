@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 7 Aug 2024, 4:20:17 PM
- *  Last update: 15 Aug 2024, 10:48:42 PM
+ *  Last update: 16 Aug 2024, 12:14:41 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { createSlice } from "@reduxjs/toolkit";
@@ -13,6 +13,7 @@ const initialState = {
     deviceFeatures: {
         vibration: false,
         notification: false,
+        fullscreen: false,
     },
     professions: {
         rancher: false,
@@ -80,6 +81,10 @@ const settingsSlice = createSlice({
         setNotification: (state, action) => {
             state.deviceFeatures.notification = action.payload;
         },
+
+        setFullscreen: (state, action) => {
+            state.deviceFeatures.fullscreen = action.payload;
+        },
     },
 });
 
@@ -89,7 +94,7 @@ export const {
     setTapper,
     setGemologist, setBlacksmith,
     setFisher, setAngler,
-    setVibration, setNotification,
+    setVibration, setNotification, setFullscreen,
 } = settingsSlice.actions;
 
 export default settingsSlice.reducer;
