@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 4:16:19 PM
- *  Last update: 15 Aug 2024, 11:03:56 PM
+ *  Last update: 15 Aug 2024, 11:40:31 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useSelector } from "react-redux";
@@ -19,12 +19,15 @@ export default function CalculatorScreen() {
                     notificationEnabled &&
                     <ButtonWithIcon
                         caption="Send a calculation complete notification"
-                        onClick={() => {
-                            new Notification("Calculation complete!", {
-                                body: "Your crop calculation has finished.",
-                                icon: "/assets/icon-highres.png",
-                                badge: "/assets/icon.highres.png",
-                            })
+                        onClick={async () => {
+                            if ("serviceWorker" in navigator) {
+                                const reg = await navigator.serviceWorker.ready;
+                                reg.showNotification("Calculation complete!", {
+                                    body: "Your crop calculation has finished.",
+                                    icon: "/assets/icon-highres.png",
+                                    badge: "/assets/icon.highres.png",
+                                });
+                            }
                         }}
                     />
                 }
