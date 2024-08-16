@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 15 Aug 2024, 2:35:34 PM
+ *  Last update: 15 Aug 2024, 9:38:32 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from 'react';
@@ -22,7 +22,7 @@ export default function App() {
     const [online, setOnline] = useState(navigator.onLine);
 
     window.addEventListener("online", () => setOnline(true));
-    window.addEventListener("offline", () => setOnline(false))
+    window.addEventListener("offline", () => setOnline(false));
 
     return (
         <>
