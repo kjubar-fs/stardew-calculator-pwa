@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 2:49:09 PM
- *  Last update: 16 Aug 2024, 9:26:10 AM
+ *  Last update: 16 Aug 2024, 9:43:40 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import React, { useState } from "react";
@@ -41,7 +41,7 @@ export default function BottomNav({ tabList, initialTab }) {
 
     return (
         <div className={styles.container}>
-            <div className={`scrollable ${styles.contentContainer}`}>
+            <div className={`scrollable ${styles.container}`}>
                 {React.createElement(getActiveTabComponent())}
             </div>
             <div className={styles.tabContainer}>
