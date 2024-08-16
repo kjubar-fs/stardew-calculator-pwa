@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 5 Aug 2024, 7:42:58 PM
- *  Last update: 16 Aug 2024, 9:50:55 AM
+ *  Last update: 16 Aug 2024, 11:10:48 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useSelector } from "react-redux";
@@ -18,7 +18,7 @@ export default function CategoryScreen({ navigation }) {
             {categoryList.map((category) => (
                 <ButtonWithIcon
                     key={category.id}
-                    // onPress={() => navigation.navigate("ItemList", { category })}
+                    onClick={() => navigation.navigate("ItemList", { category })}
                     caption={category.displayName}
                 />
             ))}
