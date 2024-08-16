@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 16 Aug 2024, 9:34:05 AM
- *  Last update: 16 Aug 2024, 11:05:44 AM
+ *  Last update: 16 Aug 2024, 11:19:41 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import React, { useState } from "react";
@@ -20,7 +20,7 @@ export default function StackNav({ screens }) {
      * @returns a NavScreen representing the current screen
      */
     const getCurrentScreen = () => {
-        return activeScreens[activeScreens.length - 1];
+        return Object.assign(new NavScreen(), activeScreens[activeScreens.length - 1]);
     };
 
     const navigation = {
@@ -72,7 +72,7 @@ export default function StackNav({ screens }) {
                     <h4 className={styles.title}>
                         {getCurrentScreen().getTitle()}
                     </h4>
-                    {//activeScreens.length !== 1 &&
+                    {activeScreens.length !== 1 &&
                         <button
                             className={styles.backBtn}
                             onClick={navigation.pop}
