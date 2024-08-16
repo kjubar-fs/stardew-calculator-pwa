@@ -1,0 +1,32 @@
+/*
+ *  Author: Kaleb Jubar
+ *  Created: 16 Aug 2024, 10:04:32 AM
+ *  Last update: 16 Aug 2024, 10:29:23 AM
+ *  Copyright (c) 2024 Kaleb Jubar
+ */
+.container {
+    height: 100%;
+}
+
+.headerContainer {
+    position: relative;
+    flex-direction: row;
+    padding: var(--padding-gap);
+
+    border-bottom: var(--border-width) solid var(--color-dark);
+    background-color: var(--color-light);
+}
+
+.title {
+    width: 100%;
+
+    text-align: center;
+}
+
+.backBtn {
+    position: absolute;
+
+    border: none;
+    
+    background: none;
+}
