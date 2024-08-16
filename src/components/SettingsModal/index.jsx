@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:19:59 AM
- *  Last update: 16 Aug 2024, 12:18:44 PM
+ *  Last update: 16 Aug 2024, 12:21:01 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useDispatch, useSelector } from "react-redux";
@@ -180,7 +180,7 @@ export default function SettingsModal({ onClose }) {
                         } else {
                             // exit fullscreen if in fullscreen still
                             // (i.e. it hasn't been exited manually by the user)
-                            if (document.exitFullscreen) {
+                            if (document.fullscreenElement && document.exitFullscreen) {
                                 document.exitFullscreen();
                             }
                         }
