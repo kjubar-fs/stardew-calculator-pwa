@@ -1,10 +1,11 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:19:59 AM
- *  Last update: 15 Aug 2024, 8:53:19 AM
+ *  Last update: 15 Aug 2024, 9:46:50 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useDispatch, useSelector } from "react-redux";
+import { setVibration } from "../../data/state/settingsSlice";
 
 import { setProfessionSetting } from "../../data";
 
@@ -22,6 +23,7 @@ export default function SettingsModal({ onClose }) {
     const fisherEnabled = useSelector((state) => state.settings.professions.fisher);
     const tapperEnabled = useSelector((state) => state.settings.professions.tapper);
     const anglerEnabled = useSelector((state) => state.settings.professions.angler);
+    const vibrationEnabled = useSelector((state) => state.settings.deviceFeatures.vibration);
     const dispatch = useDispatch();
 
     return (
@@ -98,6 +100,15 @@ export default function SettingsModal({ onClose }) {
                         }}
                     />
                 </div>
+
+                <h2>Vibration</h2>
+                <Checkbox
+                    caption="Enable vibration on navigate"
+                    initialValue={vibrationEnabled}
+                    onChange={(val) => {
+                        dispatch(setVibration(val));
+                    }}
+                />
 
                 <button
                     className={styles.close}
