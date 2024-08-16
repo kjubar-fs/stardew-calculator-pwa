@@ -1,0 +1,9 @@
+/*
+ *  Author: Kaleb Jubar
+ *  Created: 16 Aug 2024, 9:29:20 AM
+ *  Last update: 
+ *  Copyright (c) 2024 Kaleb Jubar
+ */
+.container {
+    gap: var(--padding-gap);
+}
