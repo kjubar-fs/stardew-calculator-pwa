@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 2:49:09 PM
- *  Last update: 15 Aug 2024, 9:58:59 PM
+ *  Last update: 16 Aug 2024, 9:19:13 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import React, { useState } from "react";
@@ -10,13 +10,10 @@ import { useSelector } from "react-redux";
 
 import styles from "./styles.module.css";
 
-export default function BottomNav({ screenComponents, tabNames, initialTab }) {
+export default function BottomNav({ tabList, initialTab }) {
     // validate props
-    if (!screenComponents || !tabNames || screenComponents.length === 0 || tabNames === 0) {
-        throw new Error("Error creating BottomNav: screenComponents and tabNames must be provided.");
-    }
-    if (screenComponents.length !== tabNames.length) {
-        throw new Error("Error creating BottomNav: screenComponents and tabNames must be the same length.");
+    if (!tabList || tabList.length === 0) {
+        throw new Error("Error creating BottomNav: tabList must be provided and have at least one tab.");
     }
 
     // get vibration setting
@@ -24,12 +21,10 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
 
     // create initial tab state
     const tabsInitState = [];
-    for (let i = 0; i < screenComponents.length; i++) {
-        tabsInitState.push(new NavTab(
-            screenComponents[i],
-            tabNames[i],
-            tabNames[i] === initialTab ? true : false,
-        ));
+    for (let i = 0; i < tabList.length; i++) {
+        const newTab = tabList[i];
+        newTab.active = newTab.name === initialTab ? true : false;
+        tabsInitState.push(newTab);
     }
     // set an active tab if initialTab was not provided
     if (!initialTab) {
@@ -55,10 +50,12 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
 
                     // on pressing the tab
                     const onPress = () => {
-                        const newTabs = tabs.slice();
-                        newTabs.forEach((tab) => {
-                            tab.active = tab.name === label;
-                        });
+                        const newTabs = [];
+                        for (const oldTab of tabs) {
+                            const newTab = {...oldTab};
+                            newTab.active = newTab.name === label;
+                            newTabs.push(newTab);
+                        }
                         setTabs(newTabs);
 
                         // vibrate if setting enabled
@@ -85,10 +82,11 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
     );
 }
 
-class NavTab {
-    constructor(component, name, active) {
+export class NavTab {
+    active;
+    
+    constructor(component, name) {
         this.component = component;
         this.name = name;
-        this.active = active;
     }
 }

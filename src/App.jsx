@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 15 Aug 2024, 9:38:32 PM
+ *  Last update: 16 Aug 2024, 9:04:15 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from 'react';
@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import store from "./data/state/store";
 
 import AppLoader from './components/AppLoader';
-import BottomNav from './components/BottomNav';
+import BottomNav, { NavTab } from './components/BottomNav';
 import CalculatorScreen from './screens/CalculatorScreen';
 import HomeScreen from './screens/HomeScreen';
 import InventoryScreen from './screens/InventoryScreen';
@@ -29,8 +29,11 @@ export default function App() {
             <Provider store={store}>
                 <AppLoader />
                 <BottomNav
-                    screenComponents={[InventoryScreen, HomeScreen, CalculatorScreen]}
-                    tabNames={["Inventory", "Home", "Calculator"]}
+                    tabList={[
+                        new NavTab(InventoryScreen, "Inventory"),
+                        new NavTab(HomeScreen, "Home"),
+                        new NavTab(CalculatorScreen, "Calculator"),
+                    ]}
                     initialTab="Home"
                 />
                 {!online && 
