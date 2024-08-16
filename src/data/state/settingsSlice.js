@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 7 Aug 2024, 4:20:17 PM
- *  Last update: 15 Aug 2024, 9:47:24 PM
+ *  Last update: 15 Aug 2024, 10:48:42 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { createSlice } from "@reduxjs/toolkit";
@@ -12,6 +12,7 @@ const initialState = {
     userId,     // TODO: remove hardcoded user ID
     deviceFeatures: {
         vibration: false,
+        notification: false,
     },
     professions: {
         rancher: false,
@@ -75,6 +76,10 @@ const settingsSlice = createSlice({
         setVibration: (state, action) => {
             state.deviceFeatures.vibration = action.payload;
         },
+
+        setNotification: (state, action) => {
+            state.deviceFeatures.notification = action.payload;
+        },
     },
 });
 
@@ -84,7 +89,7 @@ export const {
     setTapper,
     setGemologist, setBlacksmith,
     setFisher, setAngler,
-    setVibration,
+    setVibration, setNotification,
 } = settingsSlice.actions;
 
 export default settingsSlice.reducer;
