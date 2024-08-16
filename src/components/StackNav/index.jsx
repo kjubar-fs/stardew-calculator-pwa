@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 16 Aug 2024, 9:34:05 AM
- *  Last update: 16 Aug 2024, 12:53:41 PM
+ *  Last update: 16 Aug 2024, 12:56:02 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import React, { useState } from "react";
@@ -82,6 +82,7 @@ export default function StackNav({ screens }) {
                     }
                 </div>
             }
+            {/* TODO: reset scroll position when navigating */}
             <div className={`scrollable ${styles.container}`}>
                 {React.createElement(getCurrentScreen().component, {
                     navigation,
