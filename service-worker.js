@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 15 Aug 2024, 8:57:42 AM
- *  Last update: 15 Aug 2024, 12:50:08 PM
+ *  Last update: 16 Aug 2024, 1:09:24 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { settingsSyncTag, messageTypes, ClientMessage } from "./src/includes/variables";
@@ -69,45 +69,43 @@ self.addEventListener("activate", (event) => {
  * Triggered when the service worker retrieves an asset.
  */
 self.addEventListener("fetch", (event) => {
-    // TODO: switch back to Stale While Revalidate
-    // temporarily using network only so I don't have to refresh a bunch
-    event.respondWith(fetch(event.request));
-
     // this code uses cache strategy: Stale While Revalidate
     
     // only cache things from URLs starting with http
     // this makes us not attempt to cache things like chrome extensions,
     // react devtools, etc.
-    // if (event.request.url.startsWith("http") && event.request.method === "GET") {
-    //     // a variant of the code given in the demo video using an async IIFE
-    //     // and await instead of .then().catch()
-    //     event.respondWith((async () => {
-    //         // get the cache and response from the cache
-    //         const cache = await caches.open(cacheName);
-    //         // cache.match() can return undefined so we don't need a .catch() to handle match failing
-    //         const cachedResp = await cache.match(event.request);
+    // also don't intercept cors requests, as that could interfere with Firebase
+    if (event.request.url.startsWith("http") && event.request.method === "GET"
+        && event.request.mode !== "cors") {
+        // a variant of the code given in the demo video using an async IIFE
+        // and await instead of .then().catch()
+        event.respondWith((async () => {
+            // get the cache and response from the cache
+            const cache = await caches.open(cacheName);
+            // cache.match() can return undefined so we don't need a .catch() to handle match failing
+            const cachedResp = await cache.match(event.request);
 
-    //         // check for an updated version of the page
-    //         // need a .catch() to return undefined in the event the fetch fails
-    //         // this will only explicitly fail if the user is offline
-    //         // non-success HTTP responses (like 404, 500) still return a response object
-    //         // if we needed to handle other HTTP responses,
-    //         // we'd need to check that first before storing in the cache
-    //         let fetchedResp = await fetch(event.request).catch(() => undefined);
-    //         // if we got a response, clone it (so it doesn't disappear) and cache it
-    //         if (fetchedResp) {
-    //             cache.put(event.request, fetchedResp.clone());
-    //         }
-    //         // if we had an offline page, we could return that from the static cache
-    //         // here if the fetch fails
+            // check for an updated version of the page
+            // need a .catch() to return undefined in the event the fetch fails
+            // this will only explicitly fail if the user is offline
+            // non-success HTTP responses (like 404, 500) still return a response object
+            // if we needed to handle other HTTP responses,
+            // we'd need to check that first before storing in the cache
+            let fetchedResp = await fetch(event.request).catch(() => undefined);
+            // if we got a response, clone it (so it doesn't disappear) and cache it
+            if (fetchedResp) {
+                cache.put(event.request, fetchedResp.clone());
+            }
+            // if we had an offline page, we could return that from the static cache
+            // here if the fetch fails
 
-    //         // if we had a cached copy of the resource, return it
-    //         // otherwise return whatever we fetched
-    //         return cachedResp || fetchedResp;
-    //     })());
-    // } else {
-    //     event.respondWith(fetch(event.request));
-    // }
+            // if we had a cached copy of the resource, return it
+            // otherwise return whatever we fetched
+            return cachedResp || fetchedResp;
+        })());
+    } else {
+        event.respondWith(fetch(event.request));
+    }
 });
 
 /**
