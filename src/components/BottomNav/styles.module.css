@@ -1,10 +1,14 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 3:18:47 PM
- *  Last update: 16 Aug 2024, 9:43:42 AM
+ *  Last update: 16 Aug 2024, 12:48:20 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 .container {
+    height: 100%;
+}
+
+.contentContainer {
     height: 100%;
 }
 
@@ -40,4 +44,21 @@
     height: 2px;
     
     background-color: var(--color-dark);
+}
+
+@media screen and (min-width: 769px) {
+    .container {
+        width: 50%;
+    }
+
+    .contentContainer {
+        width: 100%;
+    }
+
+    .tabContainer {
+        border-left: var(--border-width) solid var(--color-dark);
+        border-right: var(--border-width) solid var(--color-dark);
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+    }
 }

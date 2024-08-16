@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 14 Aug 2024, 9:43:06 AM
+ *  Last update: 16 Aug 2024, 12:48:49 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 
@@ -91,4 +91,10 @@ button {
     padding: var(--padding-card);
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
     border-radius: var(--border-radius);
+}
+
+@media screen and (min-width: 769px) {
+    #root {
+        align-items: center;
+    }
 }

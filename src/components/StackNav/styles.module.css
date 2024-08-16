@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 16 Aug 2024, 10:04:32 AM
- *  Last update: 16 Aug 2024, 10:29:23 AM
+ *  Last update: 16 Aug 2024, 12:49:31 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 .container {
@@ -29,4 +29,13 @@
     border: none;
     
     background: none;
+}
+
+@media screen and (min-width: 769px) {
+    .headerContainer {
+        border-left: var(--border-width) solid var(--color-dark);
+        border-right: var(--border-width) solid var(--color-dark);
+        border-bottom-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+    }
 }
