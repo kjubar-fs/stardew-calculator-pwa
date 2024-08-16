@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 7 Aug 2024, 4:20:17 PM
- *  Last update: 8 Aug 2024, 2:36:28 PM
+ *  Last update: 15 Aug 2024, 9:47:24 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { createSlice } from "@reduxjs/toolkit";
@@ -10,6 +10,9 @@ import { userId } from "../../includes/variables";
 
 const initialState = {
     userId,     // TODO: remove hardcoded user ID
+    deviceFeatures: {
+        vibration: false,
+    },
     professions: {
         rancher: false,
         tiller: false,
@@ -29,11 +32,13 @@ const settingsSlice = createSlice({
     name: "settings",
     initialState,
     reducers: {
+        // used for loading
         setSettings: (state, action) => {
             const { professions } = action.payload;
             state.professions = professions;
         },
 
+        // professions
         setRancher: (state, action) => {
             state.professions.rancher = action.payload;
         },
@@ -65,6 +70,11 @@ const settingsSlice = createSlice({
         setAngler: (state, action) => {
             state.professions.angler = action.payload;
         },
+
+        // device features
+        setVibration: (state, action) => {
+            state.deviceFeatures.vibration = action.payload;
+        },
     },
 });
 
@@ -73,7 +83,8 @@ export const {
     setRancher, setTiller, setArtisan,
     setTapper,
     setGemologist, setBlacksmith,
-    setFisher, setAngler
+    setFisher, setAngler,
+    setVibration,
 } = settingsSlice.actions;
 
 export default settingsSlice.reducer;
