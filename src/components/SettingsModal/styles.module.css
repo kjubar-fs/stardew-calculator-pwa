@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 10:02:00 AM
- *  Last update: 14 Aug 2024, 12:26:30 PM
+ *  Last update: 15 Aug 2024, 11:05:20 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 .modalBlur {
@@ -30,6 +30,10 @@
 
 .checkbox {
     width: 50%;
+}
+
+.smallText {
+    font-size: 0.85rem;
 }
 
 .close {

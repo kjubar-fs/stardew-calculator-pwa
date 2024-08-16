@@ -1,17 +1,19 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:19:59 AM
- *  Last update: 15 Aug 2024, 9:46:50 PM
+ *  Last update: 15 Aug 2024, 11:24:18 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useDispatch, useSelector } from "react-redux";
-import { setVibration } from "../../data/state/settingsSlice";
+import { setVibration, setNotification } from "../../data/state/settingsSlice";
 
 import { setProfessionSetting } from "../../data";
 
 import Checkbox from "../Checkbox";
+import ButtonWithIcon from "../ButtonWithIcon";
 
 import styles from "./styles.module.css";
+import { useState } from "react";
 
 export default function SettingsModal({ onClose }) {
     const userId = useSelector((state) => state.settings.userId);
@@ -24,7 +26,50 @@ export default function SettingsModal({ onClose }) {
     const tapperEnabled = useSelector((state) => state.settings.professions.tapper);
     const anglerEnabled = useSelector((state) => state.settings.professions.angler);
     const vibrationEnabled = useSelector((state) => state.settings.deviceFeatures.vibration);
+    const notificationEnabled = useSelector((state) => state.settings.deviceFeatures.notification);
     const dispatch = useDispatch();
+
+    let initNotifPerm = "denied";
+    if ("Notification" in window) {
+        initNotifPerm = Notification.permission;
+    }
+    const [notifPerm, setNotifPerm] = useState(initNotifPerm);
+
+    /**
+     * Get an element to display for the notification setting.
+     * @returns an element based on notification permissions
+     */
+    const getNotifSettingDisplay = () => {
+        switch (notifPerm) {
+            case "default":
+                return (
+                    <>
+                        <p>Allow this website to send notifications to use this setting.</p>
+                        <ButtonWithIcon
+                            caption="Allow sending notifications"
+                            onClick={async () => {
+                                const perm = await Notification.requestPermission();
+                                setNotifPerm(perm);
+                            }}
+                        />
+                    </>
+                );
+            
+            case "granted":
+                return (
+                    <Checkbox
+                        caption="Enable calculation notifications"
+                        initialValue={notificationEnabled}
+                        onChange={async (val) => {
+                            dispatch(setNotification(val));
+                        }}
+                    />
+                );
+            
+            case "denied":
+                return <p>Notifications are disabled for this website. Change your browser settings to use this feature.</p>;
+        }
+    };
 
     return (
         <div
@@ -101,7 +146,14 @@ export default function SettingsModal({ onClose }) {
                     />
                 </div>
 
-                <h2>Vibration</h2>
+                <h2>Device Features</h2>
+                <p className={styles.smallText}>
+                    These settings are simplified versions of potential options in the finished app.
+                    They are here primarily to demonstrate my ability to use PWA APIs,
+                    and are therefore not saved to the database or persist between refreshes.
+                </p>
+
+                <h3>Vibration</h3>
                 <Checkbox
                     caption="Enable vibration on navigate"
                     initialValue={vibrationEnabled}
@@ -109,6 +161,9 @@ export default function SettingsModal({ onClose }) {
                         dispatch(setVibration(val));
                     }}
                 />
+
+                <h3>Notifications</h3>
+                {getNotifSettingDisplay()}
 
                 <button
                     className={styles.close}
