@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 15 Aug 2024, 8:57:42 AM
- *  Last update: 16 Aug 2024, 1:09:24 PM
+ *  Last update: 16 Aug 2024, 5:14:53 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { settingsSyncTag, messageTypes, ClientMessage } from "./src/includes/variables";
@@ -133,17 +133,17 @@ self.addEventListener("sync", (event) => {
                 const success = await setProfessionActive(userId, profession, value);
 
                 // if successful, delete from IDB
-                // if (success) {
-                //     try {
-                //         await deleteProfession(id);
-                //     } catch (err) {
-                //         // TODO: handle error better
-                //         console.log(`Failed to delete ${id} from IDB:`, err);
-                //     }
-                // } else {
-                //     // TODO: handle error better
-                //     console.log(`Failed to update ${id} in Firebase, continuing...`);
-                // }
+                if (success) {
+                    try {
+                        await deleteProfession(id);
+                    } catch (err) {
+                        // TODO: handle error better
+                        console.log(`Failed to delete ${id} from IDB:`, err);
+                    }
+                } else {
+                    // TODO: handle error better
+                    console.log(`Failed to update ${id} in Firebase, continuing...`);
+                }
             }
 
             // let clients know to refresh the updated data
