@@ -1,10 +1,12 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 2:49:09 PM
- *  Last update: 14 Aug 2024, 11:09:46 AM
+ *  Last update: 15 Aug 2024, 9:58:59 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import React, { useState } from "react";
+
+import { useSelector } from "react-redux";
 
 import styles from "./styles.module.css";
 
@@ -16,6 +18,9 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
     if (screenComponents.length !== tabNames.length) {
         throw new Error("Error creating BottomNav: screenComponents and tabNames must be the same length.");
     }
+
+    // get vibration setting
+    const vibrationEnabled = useSelector((state) => state.settings.deviceFeatures.vibration);
 
     // create initial tab state
     const tabsInitState = [];
@@ -55,6 +60,11 @@ export default function BottomNav({ screenComponents, tabNames, initialTab }) {
                             tab.active = tab.name === label;
                         });
                         setTabs(newTabs);
+
+                        // vibrate if setting enabled
+                        if (vibrationEnabled) {
+                            navigator.vibrate(100);
+                        }
                     };
 
                     return (
