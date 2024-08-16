@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 16 Aug 2024, 9:34:05 AM
- *  Last update: 16 Aug 2024, 11:19:41 AM
+ *  Last update: 16 Aug 2024, 12:53:41 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import React, { useState } from "react";
@@ -77,7 +77,7 @@ export default function StackNav({ screens }) {
                             className={styles.backBtn}
                             onClick={navigation.pop}
                         >
-                            back
+                            &lt;&ensp;Back
                         </button>
                     }
                 </div>
