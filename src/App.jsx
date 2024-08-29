@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 29 Aug 2024, 1:24:54 PM
+ *  Last update: 29 Aug 2024, 1:29:00 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from 'react';
@@ -12,7 +12,6 @@ import store from "./data/state/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import AppLoader from './components/AppLoader';
-// import BottomNav, { NavTab } from './components/BottomNavManual';
 import BottomNav from './components/BottomNav';
 import CalculatorScreen from './screens/CalculatorScreen';
 import HomeScreen from './screens/HomeScreen';
