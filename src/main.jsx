@@ -1,25 +1,17 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 29 Aug 2024, 11:41:52 AM
+ *  Last update: 29 Aug 2024, 12:04:05 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.jsx";
 import ErrorScreen from "./screens/ErrorScreen/index.jsx";
+import InventoryScreen from "./screens/InventoryScreen/index.jsx";
 
 import "./index.css";
-
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />,
-        errorElement: <ErrorScreen />,
-    },
-]);
 
 // register the service worker
 if ("serviceWorker" in navigator) {
@@ -29,6 +21,6 @@ if ("serviceWorker" in navigator) {
 // create the React app
 createRoot(document.getElementById("root")).render(
     <StrictMode>
-        <RouterProvider router={router} />
+        <App />
     </StrictMode>,
 );
