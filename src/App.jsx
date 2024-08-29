@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 29 Aug 2024, 1:13:10 PM
+ *  Last update: 29 Aug 2024, 1:24:54 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from 'react';
@@ -31,7 +31,6 @@ const routes = [
     {
         path: "/",
         element: <HomeScreen />,
-        errorElement: <ErrorScreen />,
 
         name: "Home",
     },
@@ -50,6 +49,7 @@ const router = createBrowserRouter([
             />
         ),
         children: routes,
+        errorElement: <ErrorScreen />,
     },
 ]);
 
