@@ -1,10 +1,12 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 2:49:09 PM
- *  Last update: 29 Aug 2024, 12:11:30 PM
+ *  Last update: 29 Aug 2024, 1:06:59 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import React, { useState } from "react";
+
+import { Outlet } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
@@ -36,13 +38,19 @@ export default function BottomNavManual({ tabList, initialTab }) {
      * @returns the React Component for the currently selected tab
      */
     const getActiveTabComponent = () => {
-        return tabs.filter((tab) => tab.active)[0].component;
+        const filtered = tabs.filter((tab) => tab.active);
+        if (filtered.length !== 0) {
+            return filtered[0].component;
+        } else {
+            return <div>Empty</div>;
+        }
     };
 
     return (
         <div className={styles.container}>
             <div className={`scrollable ${styles.contentContainer}`}>
-                {React.createElement(getActiveTabComponent())}
+                {/* {React.createElement(getActiveTabComponent())} */}
+                <Outlet />
             </div>
             <div className={styles.tabContainer}>
                 {tabs.map((tab, index) => {

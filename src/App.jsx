@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 29 Aug 2024, 12:11:54 PM
+ *  Last update: 29 Aug 2024, 1:06:28 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from 'react';
@@ -22,17 +22,28 @@ import styles from "./App.module.css";
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <HomeScreen />,
-        errorElement: <ErrorScreen />,
-    },
-    {
-        path: "/inventory",
-        element: <InventoryScreen />,
-    },
-    {
-        path: "/calculator",
-        element: <CalculatorScreen />,
+        element: (
+            <BottomNav
+                tabList={[
+                    new NavTab(HomeScreen, "Home"),
+                ]}
+            />
+        ),
+        children: [
+            {
+                path: "/",
+                element: <HomeScreen />,
+                errorElement: <ErrorScreen />,
+            },
+            {
+                path: "/inventory",
+                element: <InventoryScreen />,
+            },
+            {
+                path: "/calculator",
+                element: <CalculatorScreen />,
+            },
+        ],
     },
 ]);
 
@@ -47,15 +58,7 @@ export default function App() {
         <>
             <Provider store={store}>
                 <AppLoader />
-                <BottomNav
-                    tabList={[
-                        new NavTab(InventoryScreen, "Inventory"),
-                        new NavTab(HomeScreen, "Home"),
-                        new NavTab(CalculatorScreen, "Calculator"),
-                    ]}
-                    initialTab="Home"
-                />
-                {/* <RouterProvider router={router} /> */}
+                <RouterProvider router={router} />
                 {!online && 
                     <div className={styles.offlineNotice}>
                         <h2 className={styles.offlineHeader}>You're offline!</h2>
