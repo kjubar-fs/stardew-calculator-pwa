@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 2:49:09 PM
- *  Last update: 16 Aug 2024, 12:45:11 PM
+ *  Last update: 29 Aug 2024, 12:11:30 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import React, { useState } from "react";
@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 import styles from "./styles.module.css";
 
-export default function BottomNav({ tabList, initialTab }) {
+export default function BottomNavManual({ tabList, initialTab }) {
     // validate props
     if (!tabList || tabList.length === 0) {
         throw new Error("Error creating BottomNav: tabList must be provided and have at least one tab.");
