@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 29 Aug 2024, 1:06:28 PM
+ *  Last update: 29 Aug 2024, 1:13:10 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from 'react';
@@ -12,7 +12,8 @@ import store from "./data/state/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import AppLoader from './components/AppLoader';
-import BottomNav, { NavTab } from './components/BottomNavManual';
+// import BottomNav, { NavTab } from './components/BottomNavManual';
+import BottomNav from './components/BottomNav';
 import CalculatorScreen from './screens/CalculatorScreen';
 import HomeScreen from './screens/HomeScreen';
 import InventoryScreen from './screens/InventoryScreen';
@@ -20,30 +21,35 @@ import ErrorScreen from "./screens/ErrorScreen/index.jsx";
 
 import styles from "./App.module.css";
 
+const routes = [
+    {
+        path: "/inventory",
+        element: <InventoryScreen />,
+
+        name: "Inventory",
+    },
+    {
+        path: "/",
+        element: <HomeScreen />,
+        errorElement: <ErrorScreen />,
+
+        name: "Home",
+    },
+    {
+        path: "/calculator",
+        element: <CalculatorScreen />,
+
+        name: "Calculator",
+    },
+];
 const router = createBrowserRouter([
     {
         element: (
             <BottomNav
-                tabList={[
-                    new NavTab(HomeScreen, "Home"),
-                ]}
+                tabList={routes}
             />
         ),
-        children: [
-            {
-                path: "/",
-                element: <HomeScreen />,
-                errorElement: <ErrorScreen />,
-            },
-            {
-                path: "/inventory",
-                element: <InventoryScreen />,
-            },
-            {
-                path: "/calculator",
-                element: <CalculatorScreen />,
-            },
-        ],
+        children: routes,
     },
 ]);
 
