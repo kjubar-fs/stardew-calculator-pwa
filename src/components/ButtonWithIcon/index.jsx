@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 5:50:50 PM
- *  Last update: 14 Aug 2024, 12:29:14 PM
+ *  Last update: 29 Aug 2024, 2:06:26 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import styles from "./styles.module.css";
@@ -31,7 +31,7 @@ export default function ButtonWithIcon(props) {
             className={
                 `cardWithBorder
                 ${styles.button}
-                ${className}`
+                ${className || ""}`
             }
             style={{ flexDirection: direction || "row" }}
         >
