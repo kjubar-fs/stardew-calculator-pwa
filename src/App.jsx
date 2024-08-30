@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 29 Aug 2024, 1:29:00 PM
+ *  Last update: 30 Aug 2024, 3:04:22 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from 'react';
@@ -9,48 +9,65 @@ import { useState } from 'react';
 import { Provider } from 'react-redux';
 import store from "./data/state/store";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 
 import AppLoader from './components/AppLoader';
 import BottomNav from './components/BottomNav';
 import CalculatorScreen from './screens/CalculatorScreen';
 import HomeScreen from './screens/HomeScreen';
-import InventoryScreen from './screens/InventoryScreen';
+import CategoryScreen from './screens/CategoryScreen/index.jsx';
+import ItemListScreen from './screens/ItemListScreen/index.jsx';
+import ItemDetailScreen from './screens/ItemDetailScreen/index.jsx';
 import ErrorScreen from "./screens/ErrorScreen/index.jsx";
 
 import styles from "./App.module.css";
 
-const routes = [
-    {
-        path: "/inventory",
-        element: <InventoryScreen />,
-
-        name: "Inventory",
-    },
-    {
-        path: "/",
-        element: <HomeScreen />,
-
-        name: "Home",
-    },
-    {
-        path: "/calculator",
-        element: <CalculatorScreen />,
-
-        name: "Calculator",
-    },
-];
-const router = createBrowserRouter([
-    {
-        element: (
-            <BottomNav
-                tabList={routes}
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route
+            element={
+                <BottomNav
+                    tabList={[
+                        {
+                            path: "/inventory",
+                            name: "Inventory",
+                        },
+                        {
+                            path: "/",
+                            name: "Home",
+                        },
+                        {
+                            path: "/calculator",
+                            name: "Calculator",
+                        },
+                    ]}
+                />
+            }
+            errorElement={<ErrorScreen />}
+        >
+            <Route
+                path="/"
+                element={<HomeScreen />}
             />
-        ),
-        children: routes,
-        errorElement: <ErrorScreen />,
-    },
-]);
+            <Route
+                path="/inventory"
+                element={<CategoryScreen />}
+            />
+            <Route
+                path="/inventory/:categoryId"
+                element={<ItemListScreen />}
+            />
+            <Route
+                path="/inventory/:categoryId/:itemId"
+                element={<ItemDetailScreen />}
+            />
+            <Route
+                path="/calculator"
+                element={<CalculatorScreen />}
+            />
+        </Route>
+    )
+);
 
 export default function App() {
     // track online status in a state var to conditionally show offline message
