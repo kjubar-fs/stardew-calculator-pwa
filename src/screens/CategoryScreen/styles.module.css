@@ -1,9 +1,13 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 16 Aug 2024, 9:29:20 AM
- *  Last update: 
+ *  Last update: 29 Aug 2024, 2:08:18 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 .container {
     gap: var(--padding-gap);
+}
+
+.button {
+    width: 100%;
 }
