@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 16 Aug 2024, 11:08:43 AM
- *  Last update: 30 Aug 2024, 3:24:06 PM
+ *  Last update: 30 Aug 2024, 3:45:14 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useSelector } from "react-redux";
@@ -34,6 +34,7 @@ export default function ItemListScreen() {
                             caption={item.name}
                             className={styles.button}
                             src={`/assets/sprites/${item.texture}/tile${String(item.spriteIndex).padStart(3, "0")}.png`}
+                            iconSize={40}
                         />
                     </Link>
                 ))}
