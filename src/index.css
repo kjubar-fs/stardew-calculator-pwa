@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 16 Aug 2024, 12:48:49 PM
+ *  Last update: 29 Aug 2024, 2:07:20 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 
@@ -56,6 +56,10 @@ body {
 div {
     display: flex;
     flex-direction: column;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* button needs an explicit font-size because it doesn't take from :root */
