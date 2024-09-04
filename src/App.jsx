@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 30 Aug 2024, 3:04:22 PM
+ *  Last update: 4 Sep 2024, 7:12:52 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from 'react';
@@ -71,10 +71,11 @@ const router = createBrowserRouter(
 
 export default function App() {
     // track online status in a state var to conditionally show offline message
-    const [online, setOnline] = useState(navigator.onLine);
+    // TODO: reenable
+    const [online, setOnline] = useState(/*navigator.onLine*/true);
 
-    window.addEventListener("online", () => setOnline(true));
-    window.addEventListener("offline", () => setOnline(false));
+    // window.addEventListener("online", () => setOnline(true));
+    // window.addEventListener("offline", () => setOnline(false));
 
     return (
         <>
