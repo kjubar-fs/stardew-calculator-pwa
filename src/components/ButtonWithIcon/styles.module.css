@@ -1,10 +1,11 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 5:51:02 PM
- *  Last update: 14 Aug 2024, 12:29:00 PM
+ *  Last update: 4 Sep 2024, 7:28:51 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 .button {
+    position: relative;
     display: flex;
     align-items: center;
 }
@@ -17,10 +18,14 @@
  
 .caption {
     flex-grow: 1;
+    padding: 0 40px;
     
     text-align: center;
+    align-content: center;
 }
 
 .icon {
+    position: absolute;
+
     object-fit: contain;
 }

@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 5:50:50 PM
- *  Last update: 29 Aug 2024, 2:06:26 PM
+ *  Last update: 5 Sep 2024, 11:04:22 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import styles from "./styles.module.css";
@@ -48,7 +48,14 @@ export default function ButtonWithIcon(props) {
                     }}
                 />
             }
-            <p className={styles.caption}>{caption}</p>
+            <p
+                className={styles.caption}
+                style={{
+                    minHeight: src ? iconSize || 32 : "",
+                }}
+            >
+                {caption}
+            </p>
         </button>
     );
 }
