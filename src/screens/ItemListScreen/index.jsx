@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 16 Aug 2024, 11:08:43 AM
- *  Last update: 6 Sep 2024, 4:18:16 PM
+ *  Last update: 11 Sep 2024, 6:14:44 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useSelector } from "react-redux";
@@ -16,11 +16,11 @@ import styles from "./styles.module.css";
 export default function ItemListScreen() {
     const params = useParams();
 
-    const allCategories = useSelector((state) => Object.values(state.categories.primary));
-    const category = allCategories.find((cat) => +cat.id === +params.categoryId);
+    const category = useSelector((state) => state.categories.primary[params.categoryId]);
     
-    const allItems = useSelector((state) => Object.values(state.items));
-    const itemList = allItems.filter((item) => item.category === +params.categoryId);
+    const itemList = Object.values(
+                        useSelector((state) => state.items)
+                     ).filter((item) => item.category === +params.categoryId);
 
     return (
         <TopNav showBack={true} title={category.displayName}>
