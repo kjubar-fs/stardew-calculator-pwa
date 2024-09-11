@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 5 Aug 2024, 7:42:58 PM
- *  Last update: 29 Aug 2024, 2:24:29 PM
+ *  Last update: 6 Sep 2024, 4:16:01 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useSelector } from "react-redux";
@@ -13,7 +13,7 @@ import ButtonWithIcon from "../../components/ButtonWithIcon";
 import styles from "./styles.module.css";
 
 export default function CategoryScreen() {
-    const categoryList = useSelector((state) => state.categories);
+    const categoryList = useSelector((state) => Object.values(state.categories.primary));
 
     return (
         <div className={`navContainer ${styles.container}`}>
