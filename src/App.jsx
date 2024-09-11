@@ -1,24 +1,24 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 1:13:01 PM
- *  Last update: 4 Sep 2024, 7:12:52 PM
+ *  Last update: 11 Sep 2024, 6:44:36 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
-import { useState } from 'react';
+import { useState } from "react";
 
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 import store from "./data/state/store";
 
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 
-import AppLoader from './components/AppLoader';
-import BottomNav from './components/BottomNav';
-import CalculatorScreen from './screens/CalculatorScreen';
-import HomeScreen from './screens/HomeScreen';
-import CategoryScreen from './screens/CategoryScreen/index.jsx';
-import ItemListScreen from './screens/ItemListScreen/index.jsx';
-import ItemDetailScreen from './screens/ItemDetailScreen/index.jsx';
-import ErrorScreen from "./screens/ErrorScreen/index.jsx";
+import AppLoader from "./components/AppLoader";
+import BottomNav from "./components/BottomNav";
+import CalculatorScreen from "./screens/CalculatorScreen";
+import HomeScreen from "./screens/HomeScreen";
+import CategoryScreen from "./screens/CategoryScreen";
+import ItemListScreen from "./screens/ItemListScreen";
+import ItemDetailScreen from "./screens/ItemDetailScreen";
+import ErrorScreen from "./screens/ErrorScreen";
 
 import styles from "./App.module.css";
 

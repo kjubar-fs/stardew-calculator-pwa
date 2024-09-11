@@ -1,11 +1,10 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:34:33 AM
- *  Last update: 15 Aug 2024, 8:53:06 AM
+ *  Last update: 11 Sep 2024, 6:45:40 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from "react";
-// import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 import styles from "./styles.module.css";
 
