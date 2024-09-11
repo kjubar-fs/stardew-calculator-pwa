@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 12:37:36 PM
- *  Last update: 11 Sep 2024, 7:10:14 PM
+ *  Last update: 11 Sep 2024, 7:20:35 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 export const userId = "TDIuTPOwRYiYKU0XCn9S";
@@ -15,7 +15,10 @@ export enum MessageType {
 }
 
 export class ClientMessage {
-    constructor(type, source) {
+    type: MessageType;
+    source: string;
+
+    constructor(type: MessageType, source: string) {
         this.type = type;
         this.source = source;
     }
