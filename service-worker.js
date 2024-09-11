@@ -1,10 +1,10 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 15 Aug 2024, 8:57:42 AM
- *  Last update: 16 Aug 2024, 5:14:53 PM
+ *  Last update: 11 Sep 2024, 7:13:57 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
-import { settingsSyncTag, messageTypes, ClientMessage } from "./src/includes/variables";
+import { settingsSyncTag, MessageType, ClientMessage } from "./src/includes/variables";
 
 import { getAllSettings } from "./src/data/local/read";
 import { deleteProfession } from "./src/data/local/write";
@@ -152,7 +152,7 @@ self.addEventListener("sync", (event) => {
             const activeClients = await clients.matchAll();
             for (const client of activeClients) {
                 client.postMessage(new ClientMessage(
-                    messageTypes.refreshData,
+                    MessageType.RefreshData,
                     "Settings background sync"
                 ));
             }

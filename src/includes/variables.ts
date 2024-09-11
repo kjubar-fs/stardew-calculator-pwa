@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 12:37:36 PM
- *  Last update: 15 Aug 2024, 12:37:26 PM
+ *  Last update: 11 Sep 2024, 7:10:14 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 export const userId = "TDIuTPOwRYiYKU0XCn9S";
@@ -10,9 +10,9 @@ export const userId = "TDIuTPOwRYiYKU0XCn9S";
 export const settingsSyncTag = "svc-sync-settings";
 
 // message definitions
-export const messageTypes = Object.freeze({
-    refreshData: 0,
-});
+export enum MessageType {
+    RefreshData = 0,
+}
 
 export class ClientMessage {
     constructor(type, source) {

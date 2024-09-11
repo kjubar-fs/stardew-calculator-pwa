@@ -1,12 +1,12 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 12:46:39 PM
- *  Last update: 15 Aug 2024, 1:13:50 PM
+ *  Last update: 11 Sep 2024, 7:17:52 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useEffect, useState } from "react";
 
-import { messageTypes } from "../../includes/variables";
+import { MessageType } from "../../includes/variables";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setSettings } from "../../data/state/settingsSlice";
@@ -50,7 +50,8 @@ export default function AppLoader() {
     const msgHandler = (event) => {
         // pull out the data from the message event
         const msg = event.data;
-        if (msg && ("type" in msg) && msg.type === messageTypes.refreshData) {
+        if (msg && ("type" in msg) && msg.type === MessageType.RefreshData) {
+            console.log("data refresh received");
             // message came from our SW and tells us to refresh, so set message to trigger a reload
             setMessage(msg);
         }
