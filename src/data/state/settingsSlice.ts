@@ -1,14 +1,39 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 7 Aug 2024, 4:20:17 PM
- *  Last update: 16 Aug 2024, 12:14:41 PM
+ *  Last update: 11 Sep 2024, 7:40:05 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { createSlice } from "@reduxjs/toolkit";
 
 import { userId } from "../../includes/variables";
 
-const initialState = {
+//#region types
+type ProfessionsSettings = {
+    rancher: boolean,
+    tiller: boolean,
+    artisan: boolean,
+    tapper: boolean,
+    gemologist: boolean,
+    blacksmith: boolean,
+    fisher: boolean,
+    angler: boolean,
+};
+
+type DeviceFeaturesSettings = {
+    vibration: boolean,
+    notification: boolean,
+    fullscreen: boolean,
+};
+
+type SettingsState = {
+    userId: string,
+    deviceFeatures: DeviceFeaturesSettings,
+    professions: ProfessionsSettings
+};
+//#endregion
+
+const initialState: SettingsState = {
     userId,     // TODO: remove hardcoded user ID
     deviceFeatures: {
         vibration: false,
