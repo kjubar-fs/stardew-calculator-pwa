@@ -1,10 +1,13 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:19:59 AM
- *  Last update: 16 Aug 2024, 12:21:01 PM
+ *  Last update: 12 Sep 2024, 12:29:07 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
+import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../data/state/store";
 import { setVibration, setNotification, setFullscreen } from "../../data/state/settingsSlice";
 
 import { setProfessionSetting } from "../../data";
@@ -13,21 +16,26 @@ import Checkbox from "../Checkbox";
 import ButtonWithIcon from "../ButtonWithIcon";
 
 import styles from "./styles.module.css";
-import { useState } from "react";
 
-export default function SettingsModal({ onClose }) {
-    const userId = useSelector((state) => state.settings.userId);
-    const rancherEnabled = useSelector((state) => state.settings.professions.rancher);
-    const gemologistEnabled = useSelector((state) => state.settings.professions.gemologist);
-    const tillerEnabled = useSelector((state) => state.settings.professions.tiller);
-    const blacksmithEnabled = useSelector((state) => state.settings.professions.blacksmith);
-    const artisanEnabled = useSelector((state) => state.settings.professions.artisan);
-    const fisherEnabled = useSelector((state) => state.settings.professions.fisher);
-    const tapperEnabled = useSelector((state) => state.settings.professions.tapper);
-    const anglerEnabled = useSelector((state) => state.settings.professions.angler);
-    const vibrationEnabled = useSelector((state) => state.settings.deviceFeatures.vibration);
-    const notificationEnabled = useSelector((state) => state.settings.deviceFeatures.notification);
-    const fullscreenEnabled = useSelector((state) => state.settings.deviceFeatures.fullscreen);
+//#region types
+interface SettingsModalProps {
+    onClose?: () => void,
+};
+//#endregion
+
+export default function SettingsModal({ onClose }: SettingsModalProps) {
+    const userId = useSelector((state: RootState) => state.settings.userId);
+    const rancherEnabled = useSelector((state: RootState) => state.settings.professions.rancher);
+    const gemologistEnabled = useSelector((state: RootState) => state.settings.professions.gemologist);
+    const tillerEnabled = useSelector((state: RootState) => state.settings.professions.tiller);
+    const blacksmithEnabled = useSelector((state: RootState) => state.settings.professions.blacksmith);
+    const artisanEnabled = useSelector((state: RootState) => state.settings.professions.artisan);
+    const fisherEnabled = useSelector((state: RootState) => state.settings.professions.fisher);
+    const tapperEnabled = useSelector((state: RootState) => state.settings.professions.tapper);
+    const anglerEnabled = useSelector((state: RootState) => state.settings.professions.angler);
+    const vibrationEnabled = useSelector((state: RootState) => state.settings.deviceFeatures.vibration);
+    const notificationEnabled = useSelector((state: RootState) => state.settings.deviceFeatures.notification);
+    const fullscreenEnabled = useSelector((state: RootState) => state.settings.deviceFeatures.fullscreen);
     const dispatch = useDispatch();
 
     let initNotifPerm = "denied";

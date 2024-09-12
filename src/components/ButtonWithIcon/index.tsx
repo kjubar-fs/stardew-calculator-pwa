@@ -1,16 +1,27 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 12 Aug 2024, 5:50:50 PM
- *  Last update: 5 Sep 2024, 11:04:22 AM
+ *  Last update: 12 Sep 2024, 12:24:46 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import styles from "./styles.module.css";
+
+//#region types
+interface ButtonWithIconProps {
+    className?: string,
+    direction?: "row" | "column",
+    src?: string,
+    iconSize?: number,
+    caption?: string,
+    [key: string]: any,
+};
+//#endregion
 
 /**
  * Custom button component that uses standard styles and animations,
  * and also supports having an icon next to the text.
  */
-export default function ButtonWithIcon(props) {
+export default function ButtonWithIcon(props: ButtonWithIconProps) {
     // pull out props
     // use destructuring to get a buttonProps object that doesn't have
     // properties not related to the button

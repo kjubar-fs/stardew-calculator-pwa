@@ -1,14 +1,23 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:34:33 AM
- *  Last update: 11 Sep 2024, 6:45:40 PM
+ *  Last update: 12 Sep 2024, 12:26:28 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from "react";
 
 import styles from "./styles.module.css";
 
-export default function Checkbox({ initialValue, onChange, caption, className }) {
+//#region types
+interface CheckboxProps {
+    initialValue?: boolean,
+    onChange?: (val: boolean) => void,
+    caption?: string,
+    className?: string,
+};
+//#endregion types
+
+export default function Checkbox({ initialValue, onChange, caption, className }: CheckboxProps) {
     // allow using initial value, double negate to convert
     // undefined to false if not provided
     const [checked, setChecked] = useState(!!initialValue);
