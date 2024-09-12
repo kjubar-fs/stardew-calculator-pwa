@@ -1,11 +1,12 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 12:35:30 PM
- *  Last update: 12 Sep 2024, 11:17:28 AM
+ *  Last update: 12 Sep 2024, 11:57:38 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
-import { Action, Dispatch } from "redux";
+import { Action } from "redux";
 
+import { AppDispatch } from "./state/store";
 import * as settings from "./state/settingsSlice";
 
 import * as firebaseDbWrite from "./firebase/write";
@@ -43,7 +44,7 @@ declare global {
  * @param dispatch dispatch used for updating state
  * @returns true if successful, false if not
  */
-export async function setProfessionSetting(userId: string, profession: string, value: boolean, dispatch: Dispatch) {
+export async function setProfessionSetting(userId: string, profession: string, value: boolean, dispatch: AppDispatch) {
     profession = profession.toLowerCase();
 
     // get capitalized title to access reducer by name
