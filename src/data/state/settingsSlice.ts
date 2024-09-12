@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 7 Aug 2024, 4:20:17 PM
- *  Last update: 11 Sep 2024, 7:40:05 PM
+ *  Last update: 12 Sep 2024, 11:55:56 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { createSlice } from "@reduxjs/toolkit";
@@ -26,14 +26,14 @@ type DeviceFeaturesSettings = {
     fullscreen: boolean,
 };
 
-type SettingsState = {
+type Settings = {
     userId: string,
     deviceFeatures: DeviceFeaturesSettings,
     professions: ProfessionsSettings
 };
 //#endregion
 
-const initialState: SettingsState = {
+const initialState: Settings = {
     userId,     // TODO: remove hardcoded user ID
     deviceFeatures: {
         vibration: false,
