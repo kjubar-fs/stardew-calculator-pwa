@@ -1,9 +1,11 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 12:35:30 PM
- *  Last update: 15 Aug 2024, 1:48:19 PM
+ *  Last update: 12 Sep 2024, 11:17:28 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
+import { Action, Dispatch } from "redux";
+
 import * as settings from "./state/settingsSlice";
 
 import * as firebaseDbWrite from "./firebase/write";
@@ -11,15 +13,37 @@ import * as localDbWrite from "./local/write";
 
 import { settingsSyncTag } from "../includes/variables";
 
+//#region types
+interface SyncManager {
+    getTags(): Promise<string[]>;
+    register(tag: string): Promise<void>;
+}
+  
+declare global {
+    interface ServiceWorkerRegistration {
+        readonly sync: SyncManager;
+    }
+  
+    interface SyncEvent extends ExtendableEvent {
+        readonly lastChance: boolean;
+        readonly tag: string;
+    }
+  
+    interface ServiceWorkerGlobalScopeEventMap {
+        sync: SyncEvent;
+    }
+}
+//#endregion
+
 /**
  * Set the value of the specified profession setting for the given user.
- * @param {string} userId user ID to update setting for
- * @param {string} profession profession name
- * @param {boolean} value setting value
- * @param {Dispatch<UnknownAction>} dispatch dispatch used for updating state
- * @returns 
+ * @param userId user ID to update setting for
+ * @param profession profession name
+ * @param value setting value
+ * @param dispatch dispatch used for updating state
+ * @returns true if successful, false if not
  */
-export async function setProfessionSetting(userId, profession, value, dispatch) {
+export async function setProfessionSetting(userId: string, profession: string, value: boolean, dispatch: Dispatch) {
     profession = profession.toLowerCase();
 
     // get capitalized title to access reducer by name
@@ -30,7 +54,9 @@ export async function setProfessionSetting(userId, profession, value, dispatch) 
         console.log("no function");
         return false;
     }
-    const updateFunc = settings[`set${profTitle}`];
+    
+    // @ts-ignore - ignore indexing settings with a string being unsafe
+    const updateFunc: (value: boolean) => Action = settings[`set${profTitle}`];
 
     // assume update will complete and update store first
     dispatch(updateFunc(value));
