@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 11:19:59 AM
- *  Last update: 12 Sep 2024, 12:29:07 PM
+ *  Last update: 17 Sep 2024, 10:17:17 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { useState } from "react";
@@ -48,7 +48,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
      * Get an element to display for the notification setting.
      * @returns an element based on notification permissions
      */
-    const getNotifSettingDisplay = () => {
+    const getNotifSettingDisplay = (): JSX.Element => {
         switch (notifPerm) {
             case "default":
                 return (
@@ -77,6 +77,9 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
             
             case "denied":
                 return <p>Notifications are disabled for this website. Change your browser settings to use this feature.</p>;
+            
+            default:
+                return <></>;
         }
     };
 

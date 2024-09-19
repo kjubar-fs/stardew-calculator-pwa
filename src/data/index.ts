@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 14 Aug 2024, 12:35:30 PM
- *  Last update: 12 Sep 2024, 11:57:38 AM
+ *  Last update: 17 Sep 2024, 10:17:46 AM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { Action } from "redux";
@@ -44,7 +44,7 @@ declare global {
  * @param dispatch dispatch used for updating state
  * @returns true if successful, false if not
  */
-export async function setProfessionSetting(userId: string, profession: string, value: boolean, dispatch: AppDispatch) {
+export async function setProfessionSetting(userId: string, profession: string, value: boolean, dispatch: AppDispatch): Promise<boolean> {
     profession = profession.toLowerCase();
 
     // get capitalized title to access reducer by name
